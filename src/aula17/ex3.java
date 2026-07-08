@@ -17,7 +17,7 @@ public class ex3 {
         if(sc.hasNextInt()){
             idade = sc.nextInt();
 
-            if (idade >0 && idade <= idade) {
+            if (idade >0 && idade <= 150) {
                 idadeValida = true;
             } else {
                 System.out.println("Erro: idade pode ser somente entre 0 e 150");
