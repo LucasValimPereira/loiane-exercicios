@@ -3,11 +3,16 @@ package aula17;
 import java.util.Scanner;
 
 public class ex21 {
+
+    public static int totalDivisoes = 0;
+
     public static boolean ehPrimo(int n) {
         if (n <= 1) {
             return false;
         }
         for (int i = 2; i <= Math.sqrt(n); i++) {
+            totalDivisoes++;
+
             if (n % i == 0) {
                 return false;
             }
@@ -18,19 +23,20 @@ public class ex21 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Digite um número para dizer se ele é primo?");
-        int numero = sc.nextInt();
+        System.out.println("Digite um número limite: ");
+        int numeroLimite = sc.nextInt();;
 
-        if (ehPrimo(numero)) {
-            System.out.println(numero + " é um número primo!");
-        }else {
-            System.out.println(numero + " não é um número primo.");
-            for (int i = 1; i < numero;i++) {
-                if (numero % i == 0) {
-                    System.out.print(i + " ");
-                }
+        System.out.println("\nNúmeros primos de 1 até " + numeroLimite + ":");
+
+        for (int i = 1; i <= numeroLimite; i++) {
+
+            if(ehPrimo(i)) {
+                System.out.println(i + " ");
             }
         }
+        System.out.println("\n\n------------------------------------------");
+        System.out.println("Total de divisões executadas: " + totalDivisoes);
+        System.out.println("--------------------------------------------");
 
         sc.close();
     }
