@@ -6,10 +6,8 @@ public class ex1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean valorValido = false;
-
         int num = 0;
-        while (!valorValido) {
-
+        do {
             System.out.println("digite um número entre 0 e 10:");
 
             if (sc.hasNextInt()) {
@@ -24,8 +22,9 @@ public class ex1 {
                 System.out.println("Erro: entrada inválida tem que digitar um número");
             }
             sc.nextLine();
-        }
-        System.out.println("O valor que você digitou foi ," + num);
+        } while (!valorValido);
+
+        System.out.println("O valor que você digitou foi " + num);
         sc.close();
     }
 }

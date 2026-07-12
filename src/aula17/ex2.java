@@ -8,18 +8,22 @@ public class ex2 {
         String usuario;
         String senha;
 
+        boolean cadastroNegado = false;
         do {
             System.out.println("Digite um nome de úsuario: ");
             usuario = sc.nextLine();
             System.out.println("Digite uma senha: ");
             senha = sc.nextLine();
 
-            if(usuario.equals(senha)){
+            if(usuario.equalsIgnoreCase(senha)){
+                cadastroNegado = false;
                 System.out.println("A senha não pode ser igual a usuario");
+            }else {
+                cadastroNegado = true;
+                System.out.println("Cadastro realizado com sucesso");
             }
-        }while (usuario.equals(senha));
+        }while (!cadastroNegado);
 
-        System.out.println("Cadastro realizado com sucesso");
         sc.close();
     }
 }

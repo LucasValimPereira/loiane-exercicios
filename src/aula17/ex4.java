@@ -6,62 +6,73 @@ public class ex4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        double populacaoA, populacaoB;
-        double taxaCrescA, taxaCrescB;
-        int anos;
-        char resp;
+        double populacaoA, populacaoB = 0;
+        double taxaCrescA, taxaCrescB = 0;
+        String resp;
+        boolean promptValido = false;
+
 
         do {
-            //reseta a contagem dos anos a cada nova simulação
-            anos = 0;
-            //validacao da populacaoA
-            do {
-                System.out.println("Entre com a população da cidade A (maior que 0): ");
-                populacaoA = sc.nextDouble();
-                if (populacaoA <= 0) {
-                    System.out.println("Erro: A população deve ser maior que 0.");
-                }
-            } while (populacaoA <= 0);
-            //validacao da taxaA
-            do {
-                System.out.print("Entre com a taxa de crescimento da cidade A em % (ex: 3): ");
-                taxaCrescA = sc.nextDouble();
-                if (taxaCrescA <= 0) {
-                    System.out.println("Erro: A taxa deve ser maior que 0.");
-                }
-            } while (taxaCrescA <= 0);
+            System.out.println("Entre com a população da cidade A: ");
+            populacaoA = sc.nextDouble();
 
-            do {
-                System.out.print("Entre com a população da cidade B (maior que 0): ");
-                populacaoB = sc.nextDouble();
-                if (populacaoB <= 0) {
-                    System.out.println("Erro: A população deve ser maior que 0.");
-                }
-            } while (populacaoB <= 0);
-
-            // Validação da Taxa B (deve ser maior que 0)
-            do {
-                System.out.print("Entre com a taxa de crescimento da cidade B em % (ex: 1.5): ");
-                taxaCrescB = sc.nextDouble();
-                if (taxaCrescB <= 0) {
-                    System.out.println("Erro: A taxa deve ser maior que 0.");
-                }
-            } while (taxaCrescB <= 0);
-
-            while (populacaoA < populacaoB) {
-                populacaoA += (populacaoA / 100) * taxaCrescA;
-                populacaoB += (populacaoB / 100) * taxaCrescB;
-                anos++;
+            if (populacaoA > 0) {
+                promptValido = true;
+            } else {
+                System.out.println("População A precisa ser maior que zero.");
             }
-            System.out.println("\n=== RESULTADO ===");
-            System.out.println("Serão necessários " + anos + " anos para a cidade A ultrapassar ou igualar a B.");
-            System.out.printf("População de A: %.0f habitantes.%n", populacaoA);
-            System.out.printf("População de B: %.0f habitantes.%n", populacaoB);
-            System.out.println("=================\n");
+        } while (!promptValido);
 
-            System.out.print("Deseja repetir a operação? (S/N): ");
-            resp = sc.next().toUpperCase().charAt(0);
-        } while (resp == 'S');
+        promptValido = false;
+
+        do {
+            System.out.println("Entre com a população da cidade B: ");
+            populacaoA = sc.nextDouble();
+
+            if (populacaoA > 0) {
+                promptValido = true;
+            } else {
+                System.out.println("População B precisa ser maior que zero.");
+            }
+        } while (!promptValido);
+
+        promptValido = false;
+
+        do {
+            System.out.println("Entre com a taxa de crecimento da população A: ");
+            taxaCrescA = sc.nextDouble();
+
+            if (taxaCrescA > 0) {
+                promptValido = true;
+            } else {
+                System.out.println("Taxa de crescimento precisa ser maior que zero.");
+            }
+        } while (!promptValido);
+
+        promptValido = false;
+
+        do {
+            System.out.println("Entre com a taxa de crecimento da população B: ");
+            taxaCrescA = sc.nextDouble();
+
+            if (taxaCrescA > 0) {
+                promptValido = true;
+            } else {
+                System.out.println("Taxa de crescimento precisa ser maior que zero.");
+            }
+        } while (!promptValido);
+
+        int cont = 0;
+
+        while (populacaoA < populacaoB) {
+
+            populacaoA += (populacaoA / 100) * taxaCrescA;
+            populacaoB += (populacaoB / 100) * taxaCrescB;
+            cont++;
+        }
+        System.out.println("População A: " + populacaoA);
+        System.out.println("População B: " + populacaoB);
+        System.out.println("Quantidade de anos " + cont);
 
         sc.close();
     }
