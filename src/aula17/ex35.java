@@ -6,19 +6,17 @@ public class ex35 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("-----Gerador de tabuada-----");
-        System.out.print("Digite o número da tabuada:");
-        int num = sc.nextInt();
+        System.out.println("Digite um número: ");
+        int limite = sc.nextInt();
 
-        System.out.println("O número inicial? ");
-        int inicio = sc.nextInt();
+        for (int i = 2; i <= limite; i++) {
 
-        System.out.println("O número final?");
-        int fin = sc.nextInt();
-
-        for (int i = inicio; i <= fin; i++) {
-            int resp =i +num;
-            System.out.println(num + " X " + i + " = " + resp);
+            for(int j = 2; j < i; j++) {
+                System.out.print(i + " ");
+                break;
+            }
         }
+
+        sc.close();
     }
 }
